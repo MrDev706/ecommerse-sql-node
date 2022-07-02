@@ -26,7 +26,7 @@ const createCollege = async function (req, res) {
         let Collegefullname = await Colleges.findOne({ fullName: data.fullname, isDeleted: false })
         if (Collegefullname) throw { status: false, err: `${fullName} already exist` }
         if(!data.logoLink) throw {status: false, err: "Enter Logo Link"}
-        var urlreg= /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
+        var urlreg = /^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%.\+#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%\+.#?&//=]*)$/;
         if(!(data.logoLink.match(urlreg))) throw {status: false, err: "Please Enter Correct Logo Link"}
 
 
