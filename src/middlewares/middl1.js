@@ -1,5 +1,4 @@
-const colleges = require("../models/colleges");
-const Interns = require("../models/newIntern");
+
 
 
 const isvalidkey = function(body){
@@ -61,4 +60,4 @@ const validator1 = async function(req, res, next){
         }
 }
 }
-module.exports.validator1 = validator1
+// module.exports.validator1 = validator1

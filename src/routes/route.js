@@ -1,23 +1,38 @@
 const express = require('express');
-const { json } = require('express/lib/response');
-const ucontroller = require('../controller/controller')
-const middle = require('../middlewares/middl1')
+// const { json } = require('express/lib/response');
+// const ucontroller = require('../controller/controller')
+// const middle = require('../middlewares/middl1')
+const vendorController = require("../controller/vendorController")
+
+ const cart = require("../controller/cartController")
 
 const router = express.Router();
 
 
 
 
-router.post('/functionup/colleges', ucontroller.createCollege)
+router.post('/vendor', vendorController.createVendor)
 
-router.post("/functionup/interns", middle.validator1, ucontroller.createIntern)
-
-router.get("/collegeDetails", ucontroller.collegeDetails)
+router.get("/vendor/:vendorId", vendorController.getVendor)
 
 
-//router.get("/college-list", ucontroller.collegeList)
+router.post("/user/:userId/product", middle.validator1, ucontroller.createIntern)
 
-//router.get("/interlist", ucontroller.allInters)
+router.get("/product", ucontroller.collegeDetails)
+
+
+router.post("/category", middle.validator1, ucontroller.createIntern)
+
+router.get("/category", ucontroller.collegeDetails)
+
+
+router.post("/users/:userId/cart" , cart.createCart)
+
+router.put ("/users/:userId/cart" , cart.updateCart)
+
+router.get("/users/:userId/cart" ,cart.getCart)
+
+router.delete("/users/:userId/cart", cart.deleteCart)
 
 
 
